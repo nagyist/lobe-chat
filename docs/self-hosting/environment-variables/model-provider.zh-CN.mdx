@@ -45,7 +45,7 @@ LobeChat 在部署时提供了丰富的模型服务商相关的环境变量，�
 - [使用第三方接口报错的原因](https://github.com/lobehub/lobe-chat/discussions/734)
 - [代理服务器地址填了聊天没任何反应](https://github.com/lobehub/lobe-chat/discussions/1065)
 
-### `CUSTOM_MODELS`
+### `OPENAI_MODEL_LIST`
 
 - 类型：可选
 - 描述：用来控制模型列表，使用 `+` 增加一个模型，使用 `-` 来隐藏一个模型，使用 `模型名=展示名` 来自定义模型的展示名，用英文逗号隔开。
@@ -67,16 +67,13 @@ LobeChat 在部署时提供了丰富的模型服务商相关的环境变量，�
 
 使用 `turn` 模式下，将按照填写的顺序，轮训获取得到 API Key。
 
+### ~~`CUSTOM_MODELS`~~ (已废弃)
+
+<Callout type={'warning'}> 本环境变量将在 1.0 中废弃，请尽快迁移到 `OPENAI_MODEL_LIST` </Callout>
+
 ## Azure OpenAI
 
 如果你需要使用 Azure OpenAI 来提供模型服务，可以查阅 [使用 Azure OpenAI 部署](../Deployment/Deploy-with-Azure-OpenAI.zh-CN.md) 章节查看详细步骤，这里将列举和 Azure OpenAI 相关的环境变量。
-
-### `USE_AZURE_OPENAI`
-
-- 类型：可选
-- 描述：设置该值为 `1` 开启 Azure OpenAI 配置
-- 默认值：-
-- 示例：`1`
 
 ### `AZURE_API_KEY`
 
@@ -91,6 +88,13 @@ LobeChat 在部署时提供了丰富的模型服务商相关的环境变量，�
 - 描述：Azure 的 API 版本，遵循 YYYY-MM-DD 格式
 - 默认值：`2023-08-01-preview`
 - 示例：`2023-05-15`，查阅 [最新版本][azure-api-verion-url]
+
+### `AZURE_API_ENDPOINT`
+
+- 类型：可选
+- 描述：从 Azure 门户检查资源时，可在“密钥和终结点”部分中找到此值
+- 默认值：`-`
+- 示例：`https://docs-test-001.openai.azure.com`
 
 ## 智谱 AI
 
@@ -221,4 +225,4 @@ LobeChat 在部署时提供了丰富的模型服务商相关的环境变量，�
 - 默认值：-
 - 示例：`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
 
-[azure-api-verion-url]: https://docs.microsoft.com/zh-cn/azure/developer/javascript/api-reference/es-modules/azure-sdk/ai-translation/translationconfiguration?view=azure-node-latest#api-version
+[azure-api-verion-url]  https://docs.microsoft.com/zh-cn/azure/developer/javascript/api-reference/es-modules/azure-sdk/ai-translation/translationconfiguration?view=azure-node-latest#api-version
